@@ -1,5 +1,4 @@
 package com.example.calculatorapplication;
-import androidx.annotation.IntegerRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,7 +13,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView;
     Button btnCE, btnC, btnBS, btnDiv, btn7, btn8, btn9, btnMul, btn4, btn5, btn6, btnSub, btn1, btn2, btn3, btnAdd,btn0, btnEqual;
     Integer value1, value2;
-    Float valueOne, valueTwo;
     boolean add, sub, mul, div;
 
     @Override
@@ -142,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v.getId() == btnDiv.getId()) {
             try {
-                valueOne = Float.parseFloat(textView.getText() + "");
+                value1 = Integer.parseInt(textView.getText() + "");
                 div = true;
                 textView.setText(null);
             } catch (Exception e) {
@@ -153,7 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId() == btnEqual.getId()) {
             try {
                 value2 = Integer.parseInt(textView.getText() + "");
-                valueTwo = Float.parseFloat(textView.getText() + "");
 
                 if(add) {
                     textView.setText(value1 + value2 + "");
@@ -165,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textView.setText(value1 * value2 + "");
                     mul = false;
                 } else if (div) {
-                    textView.setText(valueOne / valueTwo + "");
+                    textView.setText(value1 / value2 + "");
                     div = false;
                 }
             } catch (Exception e) {
@@ -200,16 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
-            if(valueOne != null) {
-                if(div) {
-                    textView.setText(null);
-                } else {
-                    valueOne = null;
-                    textView.setText(null);
-                }
-            }
-
-            if((value1 == null) || (valueOne == null)) {
+            if((value1 == null)) {
                 textView.setText(null);
             }
         }
