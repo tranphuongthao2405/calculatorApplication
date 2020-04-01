@@ -162,8 +162,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textView.setText(value1 * value2 + "");
                     mul = false;
                 } else if (div) {
-                    textView.setText(value1 / value2 + "");
-                    div = false;
+                    try {
+                        textView.setText(value1 / value2 + "");
+                        div = false;
+                    } catch (ArithmeticException e) {
+                        System.out.println("Denominator must not be rezo.");
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("You haven't had second value yet.");
